@@ -1,0 +1,168 @@
+import java.util.Arrays;
+
+public class AssignmentWeek4 {
+
+    public static void main(String[] args) {
+        
+        // 1. Create an array of int called ages
+        int[] ages = {3, 9, 23, 64, 2, 8, 28, 93};
+        // This is just an array of numbers that I can use
+
+        // a. Subtract the first element from the last dynamically
+        int diff = ages[ages.length - 1] - ages[0];
+        // Here I'm grabbing the last number and subtracting the first one. I'm using 'ages.length - 1' so it always gets the last spot, no matter the size of the array.
+        System.out.println("Difference between last and first element in ages: " + diff);
+
+        // b. Create a new array ages2 with 9 elements
+        int[] ages2 = {5, 10, 25, 65, 3, 9, 29, 95, 42};
+        int diff2 = ages2[ages2.length - 1] - ages2[0];
+        // Same idea as before, just with a longer array. Shows that it works for any size array, as long as you use length - 1 for the last index.
+        System.out.println("Difference between last and first element in ages2: " + diff2);
+
+        // c. Calculate average age in ages array
+        int sum = 0;
+        for(int age : ages) {
+            sum += age;  // Adding up all the numbers
+        }
+        double average = (double) sum / ages.length;
+        // Then I divide by how many numbers there are to get the average. Classic math.
+        System.out.println("Average age in ages array: " + average);
+
+        // 2. Create a names array
+        String[] names = {"Sam", "Tommy", "Tim", "Sally", "Buck", "Bob"};
+        // This one's a string array with names. Pretty straightforward.
+
+        // a. Calculate average number of letters per name
+        int totalLetters = 0;
+        for(String name : names) {
+            totalLetters += name.length();  // Adding up how many letters are in each name
+        }
+        double avgLetters = (double) totalLetters / names.length;
+        // Divide by the number of names to get the average letter count.
+        System.out.println("Average letters per name: " + avgLetters);
+
+        // b. Concatenate all names separated by spaces
+        StringBuilder allNames = new StringBuilder();
+        for(String name : names) {
+            allNames.append(name).append(" ");  // Adding each name and a space to the StringBuilder
+        }
+        // This glues all the names into one big string with spaces in between.
+        System.out.println("Concatenated names: " + allNames.toString().trim());
+
+        // 3. How to access last element of any array
+        System.out.println("Last element of ages: " + ages[ages.length - 1]);
+        // Just use length - 1 to get the last thing in the array.
+
+        // 4. How to access first element of any array
+        System.out.println("First element of ages: " + ages[0]);
+        // And 0 for the first element, because arrays start counting at 0.
+
+        // 5. Create nameLengths array based on names array
+        int[] nameLengths = new int[names.length];
+        for(int i = 0; i < names.length; i++) {
+            nameLengths[i] = names[i].length();  // Store the length of each name
+        }
+        // This makes a new array where each spot holds how long a name is.
+        System.out.println("nameLengths array: " + Arrays.toString(nameLengths));
+
+        // 6. Sum of elements in nameLengths array
+        int nameSum = 0;
+        for(int len : nameLengths) {
+            nameSum += len;  // Add up all the name lengths
+        }
+        // This gives the total number of letters across all the names.
+        System.out.println("Total sum of nameLengths: " + nameSum);
+
+        // 7. Test repeatWord method
+        String repeated = repeatWord("Hello", 8);
+        // This method repeats "Hello" 3 times. So it should print HelloHelloHello.
+        System.out.println("Repeated word: " + repeated);
+
+        // 8. Test getFullName method
+        String fullName = getFullName("John", "Doe");
+        // Combines first and last name with a space in between.
+        System.out.println("Full name: " + fullName);
+
+        // 9. Test isSumGreaterThan100 method
+        int[] nums = {10, 20, 30, 50};
+        boolean greaterThan100 = isSumGreaterThan100(nums);
+        // This checks if all the numbers in nums add up to more than 100.
+        System.out.println("Is sum greater than 100? " + greaterThan100);
+
+        // 10. Test average method
+        double[] doubles = {10.5, 20.5, 30.5};
+        double avg = average(doubles);
+        // Gets the average of these decimal numbers.
+        System.out.println("Average of doubles: " + avg);
+
+        // 11. Test isFirstAvgGreater method
+        double[] arr1 = {10.0, 20.0, 30.0};
+        double[] arr2 = {5.0, 15.0, 25.0};
+        boolean isGreater = isFirstAvgGreater(arr1, arr2);
+        // Compares averages of two arrays to see if the first one is bigger.
+        System.out.println("Is first array average greater? " + isGreater);
+
+        // 12. Test willBuyDrink method
+        boolean buyDrink = willBuyDrink(true, 12.00);
+        // Checks if it’s hot outside and you have more than $10.50 in your pocket.
+        System.out.println("Will buy drink? " + buyDrink);
+
+        // 13. Test custom method isPrime
+        int testNumber = 29;
+        boolean primeCheck = isPrime(testNumber);
+        // This checks if a number is prime. Should return true for 29.
+        System.out.println("Is " + testNumber + " prime? " + primeCheck);
+    }
+
+    // 7. Method to repeat a word n times
+    public static String repeatWord(String word, int n) {
+        StringBuilder result = new StringBuilder();
+        for(int i = 0; i < n; i++) {
+            result.append(word);  // Add the word n times
+        }
+        return result.toString();
+    }
+
+    // 8. Method to return full name
+    public static String getFullName(String firstName, String lastName) {
+        return firstName + " " + lastName;  // Combines first and last with a space
+    }
+
+    // 9. Method to check if sum of int array > 100
+    public static boolean isSumGreaterThan100(int[] numbers) {
+        int total = 0;
+        for(int num : numbers) {
+            total += num;  // Add up the numbers
+        }
+        return total > 100;  // Check if total is over 100
+    }
+
+    // 10. Method to get average of double array
+    public static double average(double[] numbers) {
+        double sum = 0;
+        for(double num : numbers) {
+            sum += num;  // Add them up
+        }
+        return sum / numbers.length;  // Divide by the number of elements
+    }
+
+    // 11. Method to compare averages of two arrays
+    public static boolean isFirstAvgGreater(double[] arr1, double[] arr2) {
+        return average(arr1) > average(arr2);  // Compare the two averages
+    }
+
+    // 12. Method willBuyDrink
+    public static boolean willBuyDrink(boolean isHotOutside, double moneyInPocket) {
+        return isHotOutside && moneyInPocket > 10.50;  // Both conditions need to be true
+    }
+
+    // 13. My method to check if a number is prime
+    // This checks if a number is only divisible by 1 and itself.
+    public static boolean isPrime(int number) {
+        if(number <= 1) return false;  // 1 and below aren’t prime
+        for(int i = 2; i <= Math.sqrt(number); i++) {
+            if(number % i == 0) return false;  // If it divides evenly, it’s not prime
+        }
+        return true;  // Passed all checks, it’s prime
+    }
+}
