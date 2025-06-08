@@ -78,7 +78,7 @@ public class App {
         asteriskLogger.error("Hello");
 
         // Tests SpacedLogger's log and error methods
-        System.out.println("\nSpacedLogger log:"); // <-- fixed this line
+        System.out.println("\nSpacedLogger log:"); 
         spacedLogger.log("Hello");
         System.out.println("SpacedLogger error:");
         spacedLogger.error("Hello");
